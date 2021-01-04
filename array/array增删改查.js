@@ -30,6 +30,12 @@ let arr = [ { name:'h',age:18}, {name:'g',age:19}]
 console.log(arr.some( item => item.age < 20)) //true
 console.log(arr.some( item => item.age < 19)) //true
 console.log(arr.some( item => item.age < 10)) //false 么有一个能够满足
+// array.find(function(currentValue, index, arr),thisValue)
+// currentValue	必需。当前元素 index	可选。当前元素的索引值。 arr	可选。当前元素所属的数组对象。
+// thisValue 可选。传递给函数的值一般用 "this" 值。如果这个参数为空， "undefined" 会传递给 "this" 值
+let arr = [1,2,1,4]
+let arr1 = arr.find( item => item === 1 ) ; //只找到第一个1
+console.log(arr1)
 // array.forEach( function(currentValue, index, arr), thisValue ) 
 // currentValue	必需。当前元素 index	可选。当前元素的索引值。 arr	可选。当前元素所属的数组对象。
 // thisValue 可选。传递给函数的值一般用 "this" 值。如果这个参数为空， "undefined" 会传递给 "this" 值
@@ -48,7 +54,6 @@ console.log(valueList)  //[ 16 ]
 let arr = [1,2,3,4];
 let arr2 =  arr.map( item => item + 'hah');
 console.log(arr2)  //["1hah", "2hah", "3hah", "4hah"]
-
 // array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 // total	必需。初始值, 或者计算结束后的返回值。 currentValue	必需。当前元素 currentIndex	可选。当前元素的索引 arr	可选。当前元素所属的数组对象。
 // initialValue 可选。传递给函数的初始值
