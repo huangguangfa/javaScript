@@ -48,7 +48,7 @@ getNameFn()//李四
 function getName( name ){
     let myName = name
     return function(){
-        console.log(`闭包获取的名称:${myName}`)  //return 出来的函数对上层函数作用域的内容保存下来了、从而形成闭包、闭包因为一直保存着作用域的原因、如果大量使用会导致内存泄漏的风险
+        console.log(`闭包获取的名称:${myName}`)  //return 出来的函数对上层函数作用域的内容保存下来了、从而形成闭包、大量使用闭包会导致内存泄露、因为一直保存作用域环境的原因导致无法释放出去！
     }
 }
 let fn = getName('张三')
