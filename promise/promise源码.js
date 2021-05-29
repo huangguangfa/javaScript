@@ -4,7 +4,7 @@ class GfPromise {
     RESOLVED = 'RESOLVED';
     REJECTED = 'REJECTED';
     //判断是否是一个方法
-    isFunction( value ){  return value => typeof value === 'function'; }
+    isFunction( value ){  return typeof value === 'function'; }
     constructor( fn ){
         if( !this.isFunction( fn ) ) throw new Error('promise not one function')
         this.status = this.PENDING;

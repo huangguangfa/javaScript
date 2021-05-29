@@ -6,7 +6,7 @@ function find(arr, func) {
     return undefined
   }
 let item = find([1,2,3],item => item === 1);  
-console.log(item) //1
+console.log(item) //122
 
 // map
 function map(arr,callback, thisArg) {

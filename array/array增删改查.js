@@ -36,7 +36,7 @@ console.log(arr.some( item => item.age < 10)) //false 么有一个能够满足
 let arr = [1,2,1,4]
 let arr1 = arr.find( item => item === 1 ) ; //只找到第一个1
 console.log(arr1)
-// array.forEach( function(currentValue, index, arr), thisValue ) 
+// array.forEach( function(currentValue, index, arr), thisValue )  
 // currentValue	必需。当前元素 index	可选。当前元素的索引值。 arr	可选。当前元素所属的数组对象。
 // thisValue 可选。传递给函数的值一般用 "this" 值。如果这个参数为空， "undefined" 会传递给 "this" 值
 let data = [1,2,3,4,5];
