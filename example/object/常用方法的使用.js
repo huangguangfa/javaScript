@@ -11,7 +11,7 @@ console.log(Object.assign(obj,obj1)) //{name: "gf", age: 18}
 let obj = { name:'gf'}
 let obj1 = {age:18}
 console.log({...obj,...obj1}) //{name: "gf", age: 18}
-//Object.setPrototypeOf  
+//Object.setPrototypeOf
 let obj = { name:'gf'} 
 let objProtoType = { age:18}
 console.log(Object.setPrototypeOf(obj,objProtoType))
@@ -67,7 +67,7 @@ console.log(descriptor1.value);
 // writable:false,//对象属性是否可修改,flase为不可修改，默认值为true
 // value:'42' //对象属性的默认值，默认值为undefined
 //深拷贝 乞丐版
-JSON. parse (JSON.stringify(obj)); //不可以拷贝 undefined ， function， RegExp 等等类型的
+JSON.parse (JSON.stringify(obj)); //不可以拷贝 undefined ， function， RegExp 等等类型的
 //低配版
 function deepClone(obj) {
   const res = obj instanceof Array ? [] : {}
@@ -129,5 +129,5 @@ const source  = {
         }
     }
 }
-const deepObject = deepCopy (source);
+const deepObject = deepCopy(source);
 console.log('deepObject', source)
