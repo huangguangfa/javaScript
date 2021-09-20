@@ -10,16 +10,45 @@
     <p>三者的相同点</p>
     <ul>
         <li>都是声明变量的关键字</li>
-        <li>都是遵循先声明后使用</li>
+        <li>都是遵循先声明后使用、函数内部优先查找内部是否声明、未声明可访问外部变量</li>
     </ul>
     <p>不同点</p>
     <ul>
+        <li>使用var定义的变量没有块级作用域概念、全部是挂载到window下</li>
         <li>var相对另外两个会有变量提升的特殊形式、导致代码会有很多不确定性</li>
-        <li>let 和const的区别在于使用const后基础数据类型不能</li>
+        <li>let 和const的区别在于使用const定义的变量不能更改其值、基础数据类型对比的是value而引用数据对比的是引用地址、所以使用const定义的对象是允许修改对象属性值的</li>
     </ul>
 </body>
 </html>
 
 <script>
+    var user = 'gf';
+    var user = 'gf1';
+    console.log(user); //gf1
 
+    let user_let = 'gf';
+    let user_let = 'gf1'; //报错 Uncaught SyntaxError: Identifier 'user_let' has already been declared
+
+    let user_const = 'gf'
+    let user_const = 'gf1' //报错  Uncaught SyntaxError: Identifier 'user_const' has already been declared
+
+    const users_const = {
+        name:'gf'
+    }
+
+    users_const.name = '李四' 
+    console.log(users_const.name) //李四
+
+
+    let user_name = 'gf'
+    function getName(){
+        let user_name = '李四';
+        console.log(user_name) //李四
+    }
+
+    //块概念
+    {
+        let fullName = 'gf_block'
+    }
+    console.log(fullName) //Uncaught ReferenceError: fullName is not defined
 </script>
