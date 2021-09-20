@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let和const</title>
+</head>
+<body>
+    <p>变量提升所带来的隐患、let和const是什么</p>
+    <ul>
+        <li>因为我们使用var会有代码隐患、默认变量提升的作用导致很多情况我们无法预测、使得代码无法做到健壮性</li>
+        <li>所以在ES6我们引入了left、const两个变量声明方式、同样遵循先声明后使用、而且无法声明相同的变量key和在声明之前使用变量</li>
+        <li>left是定义一个会变化赋值的变量、而const是定义一个之后都不会变动的声明方式</li>
+        <li>在函数参数中仍然遵循"先声明后使用"原则, 参数也是依次"从左至右，从上至下"原则声明和赋值</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    console.log(user);  //在声明之前使用会报错 Uncaught ReferenceError: Cannot access 'user' before initialization
+    let user = "gf1";
+
+    function getName(){
+        console.log(user);  //在声明之前使用会报错 Uncaught ReferenceError: Cannot access 'user' before initialization
+        const user = "gf2" 
+    }
+    getName();
+
+    // function run(a = b, b = 1) {} // 抛异常
+    function run(a = 1, b = a) {} // 正常执行
+    run()
+</script>
+
+
+
+<script>
+    console.log(user) //在声明之前使用会报错 Uncaught ReferenceError: Cannot access 'user' before initialization
+    let user = 'gf'
+    let user = 'zsan ' //重复声明会报错 Uncaught SyntaxError: Identifier 'user' has already been declared
+
+    //let 
+    let user = {
+        name:'gf'
+    }
+    user.name = 'gf111' //ok
+    user = {   //ok
+        name:'lis'
+    }
+    
+    //const 
+    const user = {
+        name:'gf'
+    }
+    user.name = 'lisi' //ok
+    user = {      //不可以改变引用地址  Uncaught TypeError: Assignment to constant variable.
+        name:'lisi'
+    }
+
+    const user = 'gf'
+    user = 'lisi'  //不可以基础类型无法改变value Uncaught TypeError: Assignment to constant variable.
+</script>

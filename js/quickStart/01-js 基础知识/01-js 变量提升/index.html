@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js变量提升</title>
+</head>
+<body>
+    <p>什么是变量提升？</p>
+    <ul>
+        <li>JS首先会对整体脚本进行解析、把所有用var定义的变量进行前置声明、就是常说的“先声明在使用”</li>
+        <li>对“先使用后声明”的var变量、当在未赋值之前默认为undefined、且在全局环境下挂载window</li>
+        <li>对于“未声明”的var变量、JS会解析编译不通过、将会抛出Uncaught ReferenceError 也不会执行对应的上下文了、代码终止</li>
+        <li>在函数内部使用的var变量仍然会进行变量提升、这并不是一个好的特征</li>
+    </ul>
+</body>
+</html>
+
+<script>
+
+    console.log(user);  //undefined
+    var user = "gf1";
+
+    function getName(){
+        console.log(user);
+        var user = "gf2"  //undefined
+    }
+    getName();
+
+</script>
+
