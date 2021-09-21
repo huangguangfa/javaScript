@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-js 值传递和值引用</title>
+</head>
+<body>
+    <p>05-js 值传递和值引用</p>
+    <ul>
+        <li>主要涉及到基础数据类型和引用类型的一个赋值和修改问题</li>
+        <li>基础数据类型值传递是直接开辟一个空间名为变量名并把值为当前赋值的value</li>
+        <li>引用数据类型值传递是把当前变量的引用地址分享出去、共享这个引用类型的指向地址</li>
+    </ul>
+    <p>基础数据和引用数据的存储关系</p>
+    <ul>
+        <li>基础数据存放在栈里</li>
+        <li>引用类型的值存放在堆里面、栈里面保存的只是一个指向堆的地址 变量-> 栈(指向堆的路径) -> 堆(数据)</li>
+        <li>引用类型会导致变量共享、导致A修改了值B也会被影响</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    // 基础数据
+    let name = 'gf';
+    let names = name; 
+    console.log(names) //gf
+    name = 'lisi'
+    console.log(names) //gf
+    // 引用类型 - 对象
+    let user = {
+        name:"gf"
+    }
+    let users = user;
+    console.log(users.name); //gf
+    user.name = 'lisi'
+    console.log(users.name); //lisi
+    // 引用类型 - 数组
+    let array = [1,2,3,4];
+    let arrays = array;
+    console.log(arrays) //[1,2,3,4]
+    array[0] = 'gf';
+    console.log(arrays) //['gf',2,3,4]
+</script>
