@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-js 全局污染&块级作用域</title>
+</head>
+<body>
+    <p>全局污染&块级作用域</p>
+    <ul>
+        <li>全局污染：变量未声明使用、使得变量成为全局变量(挂载window下)、很容易替换到其他地方使用到的变量、或者可能篡改到第三方库</li>
+        <li>启用严格模式"use strict" 避免“全局”变量声明</li>
+        <li>多脚本加载、如果两个脚本都有相同名称的变量、那么后加载脚本会覆盖之前同名变量、导致“作用域穿透”</li>
+    </ul>
+</body>
+</html>
+<script src="./a.js"></script>
+<script src="./b.js"></script>
+<script>
+    "use strict"
+    console.log(window.name_test) //b.js的变量覆盖了a.js的变量
+</script>
