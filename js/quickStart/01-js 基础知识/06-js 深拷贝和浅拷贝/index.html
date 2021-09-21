@@ -61,4 +61,47 @@
     user.obj.list[0].name = 'lisi'
     // user.name = '1111'
     console.log('obj',obj); //gf
+
+    //升级版依旧有问题就是他无法拷贝一些函数，正则、Date
+
+    //终极版
+    let source = {
+        newDate: new Date('2020-10-11 12:00:01'),
+        null: null,
+        string: 'string',
+        num: 23,
+        nan: NaN,
+        func: function () {console.log('function')},
+        arr: [1,2,3],
+        reg: /ABC\-001/,
+        regObj: new RegExp(/ABC/),
+        object: {
+            c: {
+                a: 1
+            }
+        },
+    };
+
+    function deepClone(data, cache = new Map()){
+        if( cache.has(data) ) return cache.get(data);
+        //通用数据类型、统一处理
+        const types = ['RegExp', 'Date', 'Set', 'Map', 'WeakMap', 'WeakSet'];
+        let curType = Object.prototype.toString.call(data).slice(8,-1);
+        if( types.includes(curType) ) return new data.constructor(data);
+        let result = curType === 'Array' ? [] : {};
+        for(let key of Reflect.ownKeys(data)){
+            let value = data[key];
+            let vType = Object.prototype.toString.call(value).slice(8,-1);
+            //引用类型处理
+            if( vType === 'Object' || vType === 'Array' ){
+                result[key] = deepClone(value, cache);
+                cache.set(data, result);
+            }else{
+                result[key] = value;
+            }
+        }
+        return result;
+    }
+    let cloneData = deepClone(source);
+    console.log(cloneData)
 </script>
