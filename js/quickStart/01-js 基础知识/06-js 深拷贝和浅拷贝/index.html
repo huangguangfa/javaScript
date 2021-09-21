@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-js 深拷贝和浅拷贝</title>
+</head>
+<body>
+    <p>06-js 深拷贝和浅拷贝</p>
+    <ul>
+        <li>因为引用对象在值传递时候、共享对象地址源导致任意一个对象修改了数据源其他对象都会被影响</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    let user = {
+        name:'gf',
+        age:24,
+        savor:'篮球',
+        obj:{
+            name:111,
+            list:[{test:11},2,3]
+        }
+    }
+
+    let users = user;
+    user.name = 'lisi';
+    console.log(users.name); // 李四
+    //浅拷贝、 只能拷贝当前对象的基础数据、如果对象内还有引用对象依然会有共享地址问题
+    let assign_obj = Object.assign({}, user);
+    //浅拷贝、只能拷贝当前对象的基础数据、如果对象内还有引用对象依然会有共享地址问题
+    let assign_obj1 = {...user};
+
+    // 简易版-深拷贝
+    let copy_user = JSON.parse(JSON.stringify(user));
+    user.name = 'wangwu';
+    console.log(copy_user.name);  // gf
+    
+    // 升级版-深拷贝
+    function clone(data){
+        let res;
+        if( Object.prototype.toString.call(data) === '[object Object]' ){
+            res = {}
+            for(let key in data){
+                let value = data[key];
+                res[key] = typeof value === "object" ? clone(value) : value;
+            }
+        }
+        else if( Array.isArray(data) ){
+            res = []
+            for(let key in data){
+                let value = data[key];
+                res.push( typeof value === "object" ? clone(value) : value)
+            }
+        }
+        return res
+    }
+    let obj = clone(user);
+    user.obj.list[0].name = 'lisi'
+    // user.name = '1111'
+    console.log('obj',obj); //gf
+</script>
