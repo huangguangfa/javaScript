@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-js typeof和instanceof</title>
+</head>
+<body>
+    <p>typeof和instanceof</p>
+    <ul>
+        <li>typeof 判断这个数据属于什么类型、只适用与基础数据类型、像引用类型都返回object、undefined返回undefined、null返回object</li>
+        <li>instanceof判断当前对象__proto__是否来自某某构造函数的原型对象</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    let strings = 'string';
+    let numbers = 123;
+    let booleans = true;
+    let dates = new Date();
+    let fn = function(){};
+    let objects = {};
+    let arrays = [];
+    let symbols = Symbol(11);
+    let nulls = null;
+    let undefineds = undefined;
+    
+    console.log(typeof strings) //string
+    console.log(typeof numbers) //number
+    console.log(typeof booleans) //boolean
+    console.log(typeof dates) //object
+    console.log(typeof fn) //function
+    console.log(typeof objects) //object
+    console.log(typeof arrays) //object
+    console.log(typeof symbols) //symbol
+    console.log(typeof nulls) //object
+    console.log(typeof undefineds) //undefined
+
+    //我们发现当我们使用typeof 去查询date、arrays、nulls、 的时候无法区分具体类型、所以我们有了instanceof通过原型去判断是什么类型
+
+    console.log(dates instanceof Date) //true
+    console.log(objects instanceof Object) //true
+    console.log(arrays instanceof Array) //true
+    console.log(arrays instanceof Object) //array原型也注入了Object true
+    // console.log( nulls instanceof Null ) //报错、我们发现Null并不是一个内置的构造函数、所以我们需要用别的
+    console.log( nulls === null)   //我们可以直接用强等 value和类型都是null
+
+
+    //实现自定义instanceof
+    function myInstanceof(left, right){
+        let cur__proto__ = right.prototype;
+        let target__proto__ = left.__proto__;
+        while(true){
+            if( cur__proto__ === target__proto__ ){
+                return true
+            }else{
+                target__proto__ = target__proto__.__proto__;
+                if(target__proto__ === null){
+                    return false;
+                }
+            }
+        }
+    }
+
+    console.log(myInstanceof(dates, Date)) //true
+    console.log(myInstanceof(objects, Object)) //true
+    console.log(myInstanceof(arrays, Object)) //true
+
+
+    //问题：有没有什么办法能够直接获取所有属性的类型呢？ 有的、那就是使用toString、原理就是调用toString、默认返回当前对象的 [[Class]] 。这是一个内部属性，其格式为 [object Xxx] ，其中 Xxx 就是对象的类型。
+    function typeofs(val){
+        return Object.prototype.toString.call(val).slice(8,-1);
+    }
+    console.log( typeofs(strings) ) //String
+    console.log( typeofs(numbers) ) //Number
+    console.log( typeofs(booleans) ) //Boolean
+    console.log( typeofs(dates) ) //Date
+    console.log( typeofs(fn) ) //Function
+    console.log( typeofs(objects) ) //Object
+    console.log( typeofs(arrays) ) //Array
+    console.log( typeofs(symbols) ) //Symbol
+    console.log( typeofs(nulls) ) //Null
+    console.log( typeofs(undefineds) ) //Undefined
+
+
+</script>
