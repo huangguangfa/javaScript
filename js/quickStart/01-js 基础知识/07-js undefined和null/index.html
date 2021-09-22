@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-js undefined和null</title>
+</head>
+<body>
+    <p>07-js undefined和null</p>
+    <ul>
+        <li>undefined和null在if语句中，都会被自动转为false</li>
+        <li>相等运算符==两者的值是相等</li>
+        <li>undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义</li>
+        <li>null表示一个无对象、类似获取Object的原型是null</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    let undefineds = undefined;
+    let nulls = null;
+    console.log(undefineds == nulls); //true 只比较值是相等的
+    console.log(typeof nulls) //object
+    console.log(typeof undefineds) //undefined
+    let a;
+    console.log(a) //undefinde 声明了但是没有赋值
+    console.log(Object.getPrototypeOf(Object.prototype)) //null 无
+</script>
