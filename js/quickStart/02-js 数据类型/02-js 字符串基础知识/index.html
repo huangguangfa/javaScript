@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-js 字符串基础</title>
+</head>
+<body>
+    <p>字符串基础</p>
+    <ul>
+        <li>字符串可可使用new String()创建字符串、使用toString()输出、但是不建议这样、而是使用简写const name = 'gf'</li>
+        <li>使用\t输出制表符、使用&amp;&nbsp;在html元素节点输出空格符号</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    // 不推荐写法
+    let name = new String('gf')
+    console.log(name[0]) //g
+    console.log(name[1]) //f
+    console.log(name.toString()) //gf
+    // 推荐
+    let names = 'gf';
+
+    let js = 'Javascript'
+    const string_ = `gf\tis learning:\n${js}测试`
+    console.log(string_)
+</script>

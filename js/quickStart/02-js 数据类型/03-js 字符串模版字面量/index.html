@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-js 字符串模版字面量</title>
+</head>
+<body>
+    <p>03-js 字符串模版字面量</p>
+    <ul>
+        <li>模版字符串插入、使用``包裹字符串、在需要插入的地方使用关键${value}</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    let js = 'Javascript';
+    let vue = 'Vue';
+    function  tets() {
+        return '学习'
+    }
+    let status = 0
+    let string = `我${tets()}的课程有：${js}、${vue}、今天学习了${status === 0?'0小时':"1小时"}`;
+    console.log(string) //我学习的课程有：Javascript、Vue、今天学习了0小时
+</script>
