@@ -11,6 +11,10 @@
     <ul>
         <li>模版字符串插入、使用``包裹字符串、在需要插入的地方使用关键${value}</li>
     </ul>
+
+    <div id="template">
+
+    </div>
 </body>
 </html>
 
@@ -23,4 +27,15 @@
     let status = 0
     let string = `我${tets()}的课程有：${js}、${vue}、今天学习了${status === 0?'0小时':"1小时"}`;
     console.log(string) //我学习的课程有：Javascript、Vue、今天学习了0小时
+
+    let skills = ['js','html','css','vue','webpack']
+    const html = `
+        <ul>
+            ${
+                skills.map( item => `<li>${item}</li>`).join('\n')
+            }
+        </ul>
+    `
+    console.log(html)
+    document.getElementById('template').innerHTML = html
 </script>

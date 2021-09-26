@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-js 字符串常用方法</title>
+</head>
+<body>
+    <p>04-js 字符串常用方法</p>
+    <ul>
+        <li>toUpperCase,toLowerCase,trim...等、这些都是不会改变原来字符串的值(除非重新赋值)</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    let string = ' gf '
+    console.log(string)
+    console.log(string.length)
+    console.log(string.toUpperCase()) // 大写 GF
+    console.log(string.toLocaleLowerCase()) // 小写gf
+    console.log(string.trim()) //去除两端空格
+    console.log(string.trimStart().length) // 去除前面的空格
+    console.log(string.trimEnd().length) // 去除后面的空格
+</script>
