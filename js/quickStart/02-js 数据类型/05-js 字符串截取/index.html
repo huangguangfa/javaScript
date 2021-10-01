@@ -9,16 +9,31 @@
 <body>
     <p>字符串截取 常用截取方法</p>
     <ul>
-        <li>slice</li>
-        <li>substring</li>
+        <li>slice </li>
+        <li>substring </li>
         <li>substr</li>
+
+        <li>相同点：三者都可正向截取、第一个都是以下标开始、</li>
+        <li>不同点：</li>
+        <li>1、slice和substring 第二个参数也是下标、而substr第二个是裁剪的个数</li>
+        <li></li>
     </ul>
 </body>
 </html>
 
 <script>
-    let target = '1234';
-    console.log(target.slice(2)) // 234
-    console.log(target.substring(2,5)) // 23
-    console.log(target.substr(2,5)) // 34
+    let name = 'guangfa';
+    // 第二个参数不传默认都是截取剩下所有
+    console.log(name.slice(1)) // uangfa
+    console.log(name.substr(1)) // uangfa
+    console.log(name.substring(1)) // uangfa
+    // slice和substring第二个参数都是结束截取的下标、而substr第二个是截取的个数、从下标1开始往后截取5位
+    console.log(name.slice(1,3)) // uan
+    console.log(name.substring(1,4)) // uang
+    console.log(name.substr(1,5)) // uangf
+    // 反向截取、substring不支持反向截取
+    console.log(name.slice(-2,-1)) // f
+    console.log(name.substr(-1,1)) // a
+    console.log(name.substring(-2,-1)) // ""
+    
 </script>
