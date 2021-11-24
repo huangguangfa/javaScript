@@ -32,3 +32,32 @@ class {
     }
 }
 ```
+
+### 多重继承原理和super关键字使用
+```js
+let h = {
+    name:"h-name",
+    show(){
+        console.log('h show---' + this.name)
+    }
+}
+
+let g = {
+    name:"g-name",
+    __proto__:h,
+    show(){
+        super.show()
+        console.log('g show---' + this.name)
+    }
+}
+
+let f = {
+    name:"f-name",
+    __proto__:g,
+    show(){
+        super.show()
+        console.log('f show---'+this.name)
+    }
+}
+f.show()
+```
